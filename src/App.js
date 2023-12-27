@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
@@ -40,7 +40,15 @@ function App() {
       location: "Hyderabad",
     },
   ];
-
+  const [updatedExpenses,updateExpense] = useState(expenses)
+  const addExpense = (expense) =>{
+     const exp = {
+      ...expense,
+      id: Math.random().toString()
+     }
+     updateExpense([...expenses,exp])
+    //  console.log(exp)
+  }
   // return React.createElement(
   //   'div',
   //   {},
@@ -51,8 +59,8 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpense />
-      <Expenses items={expenses} />
+      <NewExpense onNewExpense = {addExpense} />
+      <Expenses items={updatedExpenses} />
     </div>
   );
 }

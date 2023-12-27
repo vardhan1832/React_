@@ -5,7 +5,7 @@ import './Expenses.css';
 function Expenses(props) {
   return (
     <Card className="expenses">
-       <ExpenseItem
+       {/* <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
         date={props.items[0].date}
@@ -24,15 +24,16 @@ function Expenses(props) {
         title={props.items[3].title}
         amount={props.items[3].amount}
         date={props.items[3].date}
-      />
-      {/* {props.items.map((expenses)=>{
+      /> */}
+      {props.items.map((expenses)=>{
          return <ExpenseItem
+         key={expenses.id}
          title={expenses.title}
          amount={expenses.amount}
          date={expenses.date}
          location={expenses.location}
        />
-      })} */}
+      })}
     </Card>
   );
 }
