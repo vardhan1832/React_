@@ -46,8 +46,14 @@ function App() {
       ...expense,
       id: Math.random().toString()
      }
-     updateExpense([...expenses,exp])
-    //  console.log(exp)
+     updateExpense(prevexp =>{
+      return [exp,...prevexp]
+     })
+  }
+  const [filteredArray,arrayFilter] = useState(updatedExpenses)
+  const filterArray = (year)=>{
+    const newArray = filteredArray.filter((x)=> x.date.getFullYear().toString().includes(year))
+    arrayFilter(newArray)
   }
   // return React.createElement(
   //   'div',
@@ -60,7 +66,7 @@ function App() {
     <div>
       <h2>Let's get started!</h2>
       <NewExpense onNewExpense = {addExpense} />
-      <Expenses items={updatedExpenses} />
+      <Expenses items={filteredArray} onFilterYear = {filterArray} />
     </div>
   );
 }
