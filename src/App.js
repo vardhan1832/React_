@@ -50,11 +50,7 @@ function App() {
       return [exp,...prevexp]
      })
   }
-  const [filteredArray,arrayFilter] = useState(updatedExpenses)
-  const filterArray = (year)=>{
-    const newArray = filteredArray.filter((x)=> x.date.getFullYear().toString().includes(year))
-    arrayFilter(newArray)
-  }
+ 
   // return React.createElement(
   //   'div',
   //   {},
@@ -66,7 +62,7 @@ function App() {
     <div>
       <h2>Let's get started!</h2>
       <NewExpense onNewExpense = {addExpense} />
-      <Expenses items={filteredArray} onFilterYear = {filterArray} />
+      <Expenses items={updatedExpenses} />
     </div>
   );
 }
